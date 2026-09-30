@@ -21,7 +21,7 @@ Linear and logistic regression implemented from scratch using NumPy
 Python, pandas, NumPy, scikit-learn, XGBoost, matplotlib, seaborn
 
 ## 📫 Contact
-[add your email / LinkedIn / Upwork profile]
+[dimasdff114@gmail.com / LinkedIn / Upwork profile]
 
 ---
 
