@@ -1,49 +1,51 @@
-# ml-journey
-# Telecom Customer Churn Prediction
+# ML Journey — Data Science Portfolio
 
-## Задача
-Предсказание оттока клиентов телеком-компании на основе их поведения, 
-использования услуг и характеристик тарифа. Бинарная классификация: 
-уйдёт клиент (1) или останется (0).
+A collection of machine learning and data analysis projects, ranging from 
+classical ML models to algorithms implemented from scratch.
 
-## Датасет
-[Telecom Churn на Kaggle](https://www.kaggle.com/datasets/barun2104/telecom-churn)
-— 3333 строки, 11 признаков, без пропущенных значений.
+## 📁 Projects
 
-## Ключевые находки EDA
-- Дисбаланс классов: ~85.5% клиентов остаются, ~14.5% уходят
-- Клиенты, обращавшиеся в поддержку чаще, статистически чаще уходят
-- Все признаки числовые, пропусков в данных нет
+### [Credit Default Risk Prediction](./credit-default-risk)
+Predicting loan default risk on 150K+ records. Handling severe class 
+imbalance, feature engineering, cross-validation.
 
-## Подход
-1. Разведочный анализ данных (EDA): распределения, групповые сравнения, корреляции
-2. Train/test split со стратификацией (stratify=y) — сохранение баланса классов
-3. Масштабирование признаков (StandardScaler)
-4. Обучение двух моделей: Logistic Regression и Random Forest
-5. Оценка через precision/recall/f1 (accuracy не показательна из-за дисбаланса)
-6. Анализ важности признаков (Feature Importance)
+### [Telecom Customer Churn Prediction](./telecom-churn)
+Predicting customer churn for a telecom operator. Full cycle: 
+EDA → models → interpretation via feature importance.
 
-## Результаты
+### [ML From Scratch](./ml-from-scratch)
+Linear and logistic regression implemented from scratch using NumPy 
+(gradient descent, sigmoid, log loss) — benchmarked against scikit-learn.
 
-| Модель              | Accuracy | Precision | Recall | F1   |
-|---------------------|----------|-----------|--------|------|
-| Logistic Regression | ...      | ...       | ...    | ...  |
-| Random Forest        | ...      | ...       | ...    | ...  |
+## 🛠️ Tech Stack
+Python, pandas, NumPy, scikit-learn, XGBoost, matplotlib, seaborn
 
-*(вставь свои реальные цифры)*
+## 📫 Contact
+[add your email / LinkedIn / Upwork profile]
 
-## Важность признаков (Random Forest)
+---
 
-Наибольшее влияние на предсказание оттока:
-1. DayMins (минуты дневных разговоров)
-2. MonthlyCharge (ежемесячный платёж)
-3. CustServCalls (звонки в поддержку)
+# ML Journey — Портфолио по Data Science
 
-## Выводы
-Отток клиентов сильнее всего связан с интенсивностью использования услуг 
-и качеством клиентского опыта (частота обращений в поддержку). 
-Бизнесу стоит в первую очередь отслеживать клиентов с высокими значениями 
-DayMins/MonthlyCharge и частыми звонками в поддержку как группу риска оттока.
+Коллекция проектов по машинному обучению и анализу данных, 
+от классических ML-моделей до реализации алгоритмов с нуля.
 
-## Использованные технологии
-Python, pandas, numpy, scikit-learn, matplotlib, seaborn
+## 📁 Проекты
+
+### [Credit Default Risk Prediction](./credit-default-risk)
+Предсказание риска дефолта по кредиту на 150K+ записей. 
+Работа с сильным дисбалансом классов, feature engineering, кросс-валидация.
+
+### [Telecom Customer Churn Prediction](./telecom-churn)
+Предсказание оттока клиентов телеком-оператора. 
+Полный цикл: EDA → модели → интерпретация через feature importance.
+
+### [ML From Scratch](./ml-from-scratch)
+Линейная и логистическая регрессия, реализованные с нуля на NumPy 
+(градиентный спуск, sigmoid, log loss) — с сравнением против scikit-learn.
+
+## 🛠️ Стек технологий
+Python, pandas, NumPy, scikit-learn, XGBoost, matplotlib, seaborn
+
+## 📫 Контакты
+[добавь свою почту / LinkedIn / Upwork профиль]
