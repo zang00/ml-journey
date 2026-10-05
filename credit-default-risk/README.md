@@ -1,19 +1,78 @@
-# Credit Default Risk
+# Credit Default Risk Prediction
 
 ## Task
+Predicting the probability of serious delinquency on a loan within 2 years 
+(binary classification) based on the borrower's financial characteristics.
 
-Estimate whether a borrower will experience serious delinquency within two years, using the Give Me Some Credit data.
+## Dataset
+Give Me Some Credit (Kaggle) — 150,000 records, 10 features.
+Strong class imbalance: ~93.3% reliable borrowers, ~6.7% defaults.
 
-## Notebook and approach
+## What was done
+- Data cleaning: handled missing values (MonthlyIncome, NumberOfDependents),
+  removed anomalous outliers (age=0, placeholder codes of 98 in delinquency 
+  counts, extreme RevolvingUtilization values)
+- Feature Engineering: created new features — TotalPastDue (total number 
+  of delinquencies), IncomePerDependent (income per dependent)
+- 5-Fold cross-validation for honest model evaluation
+- Class balancing via class_weight='balanced' — critical due to the 
+  strong imbalance
 
-[`notebook.ipynb`](./notebook.ipynb) inspects the data, handles missing values, filters several anomalous/sentinel values, adds `TotalPastDue` and `IncomePerDependent`, and compares logistic regression evaluation with and without class balancing. The notebook uses five-fold cross-validation on the training data before evaluating a class-balanced logistic regression on a holdout split.
+## Key insight: Precision/Recall trade-off
+Without class balancing, the model showed high accuracy (93.8%), but 
+recall of only 16% — meaning it missed 84% of actual defaults. 
+After class_weight='balanced': recall rose to 74%, at the cost of lower 
+precision and accuracy. For credit scoring, this is a justified trade-off — 
+the cost of a missed default is usually higher than the cost of excess caution.
 
-The notebook reads the CSV from a public raw GitHub URL. It does not require a local dataset file when that URL is available.
+## Results (test set)
+| Metric | Value |
+|---|---|
+| Accuracy | 0.804 |
+| Precision | 0.213 |
+| Recall | 0.738 |
+| F1 | 0.331 |
 
-## Results recorded in the notebook
+## Technologies used
+Python, pandas, numpy, scikit-learn, matplotlib, seaborn
 
-For the final holdout evaluation, the saved notebook output reports accuracy **0.804**, precision **0.213**, recall **0.738**, and F1 **0.331**. The notebook also reports mean five-fold recall of about **0.159** for the unbalanced model and **0.741** for the class-balanced model. These are the recorded outputs; results can vary if the data or execution environment changes.
+---
 
-## Open and run
+# Предсказание риска дефолта по кредиту
 
-Open `notebook.ipynb` in JupyterLab or Google Colab. Install pandas, NumPy, scikit-learn, matplotlib, and seaborn if needed, then run the notebook cells in order. Internet access is needed to load the CSV.
+## Задача
+Предсказание вероятности серьёзной просрочки по кредиту в течение 2 лет 
+(бинарная классификация) на основе финансовых характеристик заёмщика.
+
+## Датасет
+Give Me Some Credit (Kaggle) — 150 000 записей, 10 признаков.
+Сильный дисбаланс классов: ~93.3% надёжных заёмщиков, ~6.7% дефолтов.
+
+## Что сделано
+- Очистка данных: обработка пропусков (MonthlyIncome, NumberOfDependents),
+  удаление аномальных выбросов (age=0, коды-заглушки 98 в просрочках,
+  экстремальные значения RevolvingUtilization)
+- Feature Engineering: созданы новые признаки — TotalPastDue (суммарное 
+  количество просрочек), IncomePerDependent (доход на иждивенца)
+- Кросс-валидация (5-Fold) для честной оценки модели
+- Балансировка классов через class_weight='balanced' — критично из-за
+  сильного дисбаланса
+
+## Ключевой инсайт: компромисс Precision/Recall
+Без балансировки классов модель показывала высокую accuracy (93.8%), 
+но recall всего 16% — то есть пропускала 84% реальных дефолтов.
+После class_weight='balanced': recall вырос до 74%, ценой снижения 
+precision и accuracy. Для задачи кредитного скоринга это оправданный 
+компромисс — цена пропущенного дефолта обычно выше цены излишней 
+осторожности.
+
+## Результаты (test set)
+| Метрика | Значение |
+|---|---|
+| Accuracy | 0.804 |
+| Precision | 0.213 |
+| Recall | 0.738 |
+| F1 | 0.331 |
+
+## Использованные технологии
+Python, pandas, numpy, scikit-learn, matplotlib, seaborn
