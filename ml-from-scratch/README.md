@@ -1,17 +1,63 @@
 # ML From Scratch
 
-## Task
+Classical ML algorithms implemented from scratch using NumPy — without 
+scikit-learn for the actual training — to build deep understanding of 
+gradient descent mechanics, loss functions, and weight updates.
 
-Implement binary logistic regression with NumPy and compare its predictions with scikit-learn.
+## Files
 
-## Notebook and approach
+### `linear-regression.ipynb`
+Linear regression on the California Housing dataset.
+- Full gradient descent cycle implemented manually: forward pass, 
+  MSE loss, gradient computation, weight updates
+- Results benchmarked against sklearn.LinearRegression — metrics 
+  are nearly identical
 
-[`logistic-regression.ipynb`](./logistic-regression.ipynb) uses scikit-learn's built-in breast cancer dataset, scales the features, and implements the sigmoid, gradient updates, and prediction threshold directly with NumPy. It then fits scikit-learn's `LogisticRegression` on the same split for comparison.
+### `logistic-regression.ipynb`
+Logistic regression on the Breast Cancer dataset (binary classification).
+- Sigmoid function and Binary Cross-Entropy (Log Loss) implemented from scratch
+- Same gradient descent pattern as linear regression — demonstrates that 
+  the gradient formula for MSE and Log Loss is mathematically equivalent
+- Result: Accuracy 0.974, F1 0.979 — nearly identical to 
+  sklearn.LogisticRegression on the same data
 
-The saved outputs report accuracy **0.974**, precision **0.986**, recall **0.972**, and F1 **0.979** for the NumPy implementation; scikit-learn's corresponding values are **0.974**, **0.972**, **0.986**, and **0.979**. The notebook currently covers logistic regression; it does not contain a linear regression notebook.
+## Why this matters
+Understanding what happens "under the hood" when calling `.fit()` — 
+builds intuition for debugging models on real tasks and deeper 
+understanding of hyperparameters (learning rate, number of iterations).
 
-## Open and run
+## Technologies used
+Python, NumPy, matplotlib (for visualization), scikit-learn (comparison only)
 
-Open the notebook in JupyterLab or Google Colab. Install NumPy, scikit-learn, and matplotlib if needed, then run the cell. The dataset is bundled with scikit-learn and is downloaded automatically with that package.
+---
 
-The earlier extensionless source file from this repository is retained as [logistic-regression-previous-source.py](./logistic-regression-previous-source.py); the notebook is the primary walkthrough.
+# ML с нуля
+
+Реализация классических ML-алгоритмов с нуля на NumPy — без использования 
+scikit-learn для самого обучения — с целью глубокого понимания механики 
+градиентного спуска, функций потерь и обновления весов.
+
+## Файлы
+
+### `linear-regression.ipynb`
+Линейная регрессия на датасете California Housing.
+- Реализован полный цикл градиентного спуска вручную: forward pass, 
+  MSE loss, вычисление градиента, обновление весов
+- Результат сравнён с sklearn.LinearRegression — метрики практически совпадают
+
+### `logistic-regression.ipynb`
+Логистическая регрессия на датасете Breast Cancer (бинарная классификация).
+- Реализованы sigmoid-функция и Binary Cross-Entropy (Log Loss) с нуля
+- Тот же паттерн градиентного спуска, что и в линейной регрессии — 
+  показывает, что формула градиента для MSE и Log Loss математически 
+  эквивалентна
+- Результат: Accuracy 0.974, F1 0.979 — практически идентично 
+  sklearn.LogisticRegression на тех же данных
+
+## Зачем это нужно
+Понимание того, что происходит "под капотом" при вызове `.fit()` — 
+даёт интуицию для отладки моделей в реальных задачах и более глубокое 
+понимание гиперпараметров (learning rate, количество итераций).
+
+## Использованные технологии
+Python, NumPy, matplotlib (для визуализации), scikit-learn (только для сравнения)
